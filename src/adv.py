@@ -50,3 +50,17 @@ user = Player(room['outside'])
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
+
+while True:
+    cmd = input('...').split(' ')
+    if len(cmd) == 1:
+        cmd = cmd[0]
+    print(cmd)
+    if cmd == 'q':
+        break
+    elif cmd == 'w':
+        print(user.current_room.description)
+    elif cmd == 'room':
+        print(user.current_room)
+    elif cmd[0] == 'move':
+        print(user.move_rooms(cmd[1]))
