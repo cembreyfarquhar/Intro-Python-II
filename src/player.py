@@ -10,4 +10,3 @@ class Player:
         if self.current_room.move_rooms(direction) != 'error':
             self.current_room = self.current_room.move_rooms(direction)
             return f'Moved to room {self.current_room}'
-# oh
