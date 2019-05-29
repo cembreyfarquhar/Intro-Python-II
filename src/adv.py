@@ -87,3 +87,11 @@ while True:
             print(f'You grabbed the {cmd[1]}')
         else:
             print(f'There is no {cmd[1]} in this room')
+
+    elif cmd[0] == 'drop':
+        if cmd[1] in user.items:
+            user.drop_item(cmd[1])
+            user.current_room.put_item_in_room(cmd[1])
+            print(f'You dropped the {cmd[1]}')
+        else:
+            print(f'You do not have a {cmd[1]} in your inventory')
