@@ -1,5 +1,5 @@
 from room import Room
-from player import Player
+
 # Declare all the rooms
 
 room = {
@@ -33,7 +33,6 @@ room['narrow'].w_to = room['foyer']
 room['narrow'].n_to = room['treasure']
 room['treasure'].s_to = room['narrow']
 
-user = Player(room['outside'])
 #
 # Main
 #
@@ -50,17 +49,3 @@ user = Player(room['outside'])
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
-
-while True:
-    cmd = input('...').split(' ')
-    if len(cmd) == 1:
-        cmd = cmd[0]
-    print(cmd)
-    if cmd == 'q':
-        break
-    elif cmd == 'w':
-        print(user.current_room.description)
-    elif cmd == 'room':
-        print(user.current_room)
-    elif cmd[0] == 'move':
-        print(user.move_rooms(cmd[1]))
