@@ -10,6 +10,7 @@ class Room:
         self.e_to = None
         self.s_to = None
         self.w_to = None
+        self.items = []
 
     def move_rooms(self, direction):
         if direction == 'n' and self.n_to != None:
@@ -22,3 +23,9 @@ class Room:
             return self.w_to
         else:
             return 'error'
+
+    def put_item_in_room(self, item):
+        self.items.append(item)
+
+    def remove_item_from_room(self, item):
+        self.items.remove(item)

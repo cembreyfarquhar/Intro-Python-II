@@ -33,6 +33,9 @@ room['narrow'].w_to = room['foyer']
 room['narrow'].n_to = room['treasure']
 room['treasure'].s_to = room['narrow']
 
+# Put some items in the rooms
+room['foyer'].items = ['sword']
+
 user = Player(room['outside'])
 #
 # Main
@@ -58,9 +61,29 @@ while True:
     print(cmd)
     if cmd == 'q':
         break
-    elif cmd == 'w':
+    elif cmd == 'describe':
         print(user.current_room.description)
     elif cmd == 'room':
-        print(user.current_room)
+        print(user.current_room.name)
     elif cmd[0] == 'move':
         print(user.move_rooms(cmd[1]))
+
+    # Commands relating to the room
+
+    elif cmd[0] == 'room':
+        if cmd[1] == 'items':
+            print(user.current_room.items)
+
+    #
+
+    elif cmd[0] == 'my':
+        if cmd[1] == 'items':
+            print(user.items)
+
+    elif cmd[0] == 'get':
+        if cmd[1] in user.current_room.items:
+            user.get_item(cmd[1])
+            user.current_room.remove_item_from_room(cmd[1])
+            print(f'You grabbed the {cmd[1]}')
+        else:
+            print(f'There is no {cmd[1]} in this room')
