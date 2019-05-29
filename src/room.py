@@ -12,11 +12,13 @@ class Room:
         self.w_to = None
 
     def move_rooms(self, direction):
-        if direction == 'n':
+        if direction == 'n' and self.n_to != None:
             return self.n_to
-        elif direction == 'e':
+        elif direction == 'e' and self.e_to != None:
             return self.e_to
-        elif direction == 's':
+        elif direction == 's' and self.s_to != None:
             return self.s_to
-        elif direction == 'w':
+        elif direction == 'w' and self.w_to != None:
             return self.w_to
+        else:
+            return 'error'
