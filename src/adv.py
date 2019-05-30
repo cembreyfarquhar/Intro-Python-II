@@ -56,7 +56,7 @@ user = Player(room['outside'])
 
 while True:
     cmd = input('...').split(' ')
-    if len(cmd) == 1:
+    if len(cmd) <= 1:
         cmd = cmd[0]
     print(cmd)
     if cmd == 'q':
@@ -65,6 +65,8 @@ while True:
         print(user.current_room.description)
     elif cmd == 'room':
         print(user.current_room.name)
+    elif cmd == None:
+        print('hey, do something!')
     elif cmd[0] == 'move':
         print(user.move_rooms(cmd[1]))
 
