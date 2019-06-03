@@ -1,4 +1,5 @@
 # Implement a class to hold room information. This should have name and
+
 # description attributes.
 
 
@@ -29,3 +30,4 @@ class Room:
 
     def remove_item_from_room(self, item):
         self.items.remove(item)
+

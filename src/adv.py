@@ -1,5 +1,5 @@
 from room import Room
-from player import Player
+
 # Declare all the rooms
 
 room = {
@@ -37,6 +37,7 @@ room['treasure'].s_to = room['narrow']
 room['foyer'].items = ['sword']
 
 user = Player(room['outside'])
+
 #
 # Main
 #
@@ -53,6 +54,7 @@ user = Player(room['outside'])
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
+
 
 while True:
     cmd = input('...').split(' ')
@@ -97,3 +99,4 @@ while True:
             print(f'You dropped the {cmd[1]}')
         else:
             print(f'You do not have a {cmd[1]} in your inventory')
+

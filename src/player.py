@@ -2,6 +2,7 @@
 # currently.
 
 
+
 class Player:
     def __init__(self, current_room):
         self.current_room = current_room
@@ -19,3 +20,4 @@ class Player:
 
     def drop_item(self, item):
         self.items.remove(item)
+
