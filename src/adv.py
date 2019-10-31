@@ -21,7 +21,7 @@ chamber! Sadly, it has already been completely emptied by
 earlier adventurers. The only exit is to the south."""),
 }
 
-
+# comment for Git
 # Link rooms together
 
 room['outside'].n_to = room['foyer']
@@ -32,6 +32,11 @@ room['overlook'].s_to = room['foyer']
 room['narrow'].w_to = room['foyer']
 room['narrow'].n_to = room['treasure']
 room['treasure'].s_to = room['narrow']
+
+# Put some items in the rooms
+room['foyer'].items = ['sword']
+
+user = Player(room['outside'])
 
 #
 # Main
@@ -49,3 +54,49 @@ room['treasure'].s_to = room['narrow']
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
+
+
+while True:
+    cmd = input('...').split(' ')
+    if len(cmd) <= 1:
+        cmd = cmd[0]
+    print(cmd)
+    if cmd == 'q':
+        break
+    elif cmd == 'describe':
+        print(user.current_room.description)
+    elif cmd == 'room':
+        print(user.current_room.name)
+    elif cmd == None:
+        print('hey, do something!')
+    elif cmd[0] == 'move':
+        print(user.move_rooms(cmd[1]))
+
+    # Commands relating to the room
+
+    elif cmd[0] == 'room':
+        if cmd[1] == 'items':
+            print(user.current_room.items)
+
+    #
+
+    elif cmd[0] == 'my':
+        if cmd[1] == 'items':
+            print(user.items)
+
+    elif cmd[0] == 'get':
+        if cmd[1] in user.current_room.items:
+            user.get_item(cmd[1])
+            user.current_room.remove_item_from_room(cmd[1])
+            print(f'You grabbed the {cmd[1]}')
+        else:
+            print(f'There is no {cmd[1]} in this room')
+
+    elif cmd[0] == 'drop':
+        if cmd[1] in user.items:
+            user.drop_item(cmd[1])
+            user.current_room.put_item_in_room(cmd[1])
+            print(f'You dropped the {cmd[1]}')
+        else:
+            print(f'You do not have a {cmd[1]} in your inventory')
+
